@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/brownjohnf/topng.svg?branch=master)](https://travis-ci.org/brownjohnf/topng)
+
 # topng
 
 GIF, JPEG, PNG, WebP -> PNG converter.
