@@ -5,8 +5,10 @@ go:
   - 1.5
   - tip
 after_success:
+  - env
   - go build -o topng-$GOOS-$GOARCH
   - GOOS=darwin go build -o topng-$GOOS-$GOARCH
+  - ls -lah
 deploy:
   provider: releases
   api_key:
