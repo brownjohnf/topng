@@ -1,17 +1,21 @@
 language: go
 go:
-- 1.3
-- 1.4
-- 1.5
-- tip
+  - 1.3
+  - 1.4
+  - 1.5
+  - tip
 after_success:
-- go build
+  - go build -o topng-$GOOS-$GOARCH
+  - GOOS=darwin go build -o topng-$GOOS-$GOARCH
 deploy:
   provider: releases
   api_key:
     secure: Yyjn/Q5hMOYB9+ff7Y2zIqOsWiy6B15PbDWQ+I0H9ny0ZA7DgokXJkfmoc/YNiUJfwLD316SRvEJIdZhge4jKEKOhcCgPCsEMPAJ7CpQeqO78BYE4FP7uDpR7S/fbLcb8BXGzLZEYHPPcuRBqZC+azXQ1j1sqYkqg0Pslg6sKBXv1D2J74fmwuPGSPDlfVKOo5O5LS3xIA+LYXWYBZUImYssejSF2gNFwaeNbIP1Ubtcr5qjJK8yZyMUTNzndFb6na4fgkJCmkM5oTulp/Z4eiziquJHSGzzqOd/961wJ8p6AFduyEjvqzBgBEByUHo4d5G9fdh/FA/OEoqzp6+xO5+rs+/viMYNAWqmBnzvISAc4MVXwTU+0WpjMrSJkg3o/CE4ELYt5JMyxVxKzuzn0IGOA9i6r4xp+nTK5RMVWAVMxHfoulX6imFjCJYaiVEosr3wJ8eUQ3JpicR7b8nFfD4jC/oar1GhBDIaUOlrziC74aXgt6AVHXtNVoFmOtN5Xep7neGfXmq1Vu4XDNSnLaM0ai94FL19TxK3lhd0fFcuvBWkmWXp0wFCCUYSIEjZByi1HXDTy3qZMurfeGa/aeRw3MlzUL+qJAyP44fG8oFtTJQ6DDevDKCzYPhrh6Ef8UDBWsbBrAt88fQZJykYWEsfPEoqySE1Bo9S2JwPl+w=
-  file: topng
+  file:
+    - topng-$GOOS-$GOARCH
+    - topng-darwin-$GOARCH
   skip_cleanup: true
   on:
     tags: true
+    go: 1.5
 
