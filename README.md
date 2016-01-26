@@ -16,20 +16,37 @@ go install github.com/brownjohnf/goutils/topng
   * -h, help
   * -f, output file
   * -i, input file
-* Support resizing
 
 ## Usage
 
-From the internet:
+`topng` accepts a GIF, JPEG, PNG, or WebP image as a stream on stdin, and
+streams a PNG on stdout. It will also output the input file type as it
+was detected on stderr.
+
+Resizing is supported via the -w and -h flags for height and width. If neither
+is passed, the image will not be resized. If only one is passed, the image
+will be resized proportionally.
+
+```
+Usage of ./topng:
+  -h int
+        resize-to height
+  -w int
+        resize-to width
+```
+
+### Example Usage
+
+Converting images from the internet:
 
 ```
 curl https://some.url.with/webp.webp | topng > out.png
 ```
 
-Local file:
+Converting local files, resizing to 100px wide:
 
 ```
-topng < in.gif > out.png
+topng -w 100 < in.gif > out.png
 ```
 
 ### Examples
