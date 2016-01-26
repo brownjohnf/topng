@@ -4,3 +4,4 @@ tmp
 .DS_Store
 *.png
 topng
+.ruby-version
